@@ -249,6 +249,16 @@ class Problems{
     }
 
 
+    public List<List<Integer>> levelOrder(TreeNode root){
+        if(root == null){
+            return ans;
+        }
+
+        getLevelsTree(root, 0);
+        return ans;
+    }
+
+
 
 
 
