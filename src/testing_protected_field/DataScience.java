@@ -2,6 +2,7 @@ package testing_protected_field;
 
 import java.util.*;
 import java.util.concurrent.Flow;
+import java.util.function.BiFunction;
 
 
 record  students(String name, int age){
@@ -161,6 +162,11 @@ class GenericBox<T, V>{
     }
 
 
+    public String ConvertToString(){
+        return (String) value;
+    }
+
+
 }
 
 
@@ -174,25 +180,76 @@ class TestingGenericConcept{
         System.out.println(genericBox.getValue());
         System.out.println(genericBox.getValue().getClass());
 
-        System.out.println(max("Joseph", "Joseph"));
 
-        String value = max("Ben", "Simon");
-        System.out.println(value);
-        System.out.println(value.getClass());
-        System.out.println(value.getClass().getTypeName());
+//        System.out.println(max("Joseph", "Joseph"));
+//
+//        String value = max("Ben", "Simon");
+//        System.out.println(value);
+//        System.out.println(value.getClass());
+//        System.out.println(value.getClass().getTypeName());
 
-
-
+        BiFunction<Integer, Integer, Integer> testingMethodReference =  TestingGenericConcept::getAdditionMethodReference;
+        System.out.println(testingMethodReference.apply(10, 20));
 
 
     }
 
 
 
-    public static <T, V>  V max(T a, V b){
-
-        return b;
+    public static Integer getAdditionMethodReference(Integer a, Integer b){
+        return a + b;
     }
+
+
+
+
+
+}
+
+
+class TreeNode{
+
+    TreeNode left;
+    TreeNode right;
+    int data;
+
+    public TreeNode(int data){
+        this.data = data;
+        left = right = null;
+    }
+}
+
+
+class Problems{
+
+
+    public List<List<Integer>> ans = new ArrayList<>();
+
+
+
+    public void getLevelsTree(TreeNode root, int level){
+
+
+        if(this.ans.size() == level){
+
+            this.ans.add(new ArrayList<>());
+        }
+
+        this.ans.get(level).add(root.data);
+
+        if(root.left != null){
+            getLevelsTree(root.left, level + 1);
+        }
+
+        if(root.right != null){
+            getLevelsTree(root.right, level + 1);
+        }
+
+
+    }
+
+
+
 
 
 }
