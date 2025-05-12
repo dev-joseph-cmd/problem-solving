@@ -64,25 +64,6 @@ public class ProtectedScience {
 
 
 
-    private boolean isValid(String s){
-
-        Map<Character, Character> characterMap = new HashMap<>();
-
-        characterMap.put('}', '{');
-        characterMap.put(']', '[');
-        characterMap.put(')', '(');
-        Stack<Character> characters = new Stack<>();
-
-        for(int i = 0; i < s.length(); i ++){
-
-            char c = s.charAt(i);
-            characterMap.computeIfAbsent(c, (k) ->{
-
-                characters.push(c);
-
-
-            });
-        }
 
 
     }
