@@ -1,5 +1,6 @@
 import org.w3c.dom.Node;
 
+import java.io.*;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -459,6 +460,27 @@ class Problems{
     }
 
 
+
+
+}
+
+
+class UnderstandingBufferedReader{
+
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("/home/joe24/concept.txt"));
+        String line = null;
+        try {
+            while ((line = bufferedReader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            bufferedReader.close();
+        }
+    }
 
 
 }
